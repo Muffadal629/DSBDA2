@@ -1,0 +1,8 @@
+trans=df.transpose() #df.T
+trans
+
+shaping=df.shape
+shaping
+
+pivot_table=pd.pivot_table(df,index=['Type','Paid'],values='like') #Used for aggregation and grouping to find analysis
+pivot_table

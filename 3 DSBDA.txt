@@ -1,0 +1,53 @@
+DataFrame1.loc[DataFrame1['sex']==1,'sex']='M'
+
+
+DataFrame1.loc[DataFrame1['sex']==0,'sex']='F'
+
+
+DataFrame1.head()
+
+
+from sklearn.preprocessing import LabelEncoder
+labelencoder=LabelEncoder()
+DataFrame1["sex"]=labelencoder.fit_transform(DataFrame1["sex"])
+DataFrame1
+
+
+DataFrame1[DataFrame1['ca']==4]
+
+
+DataFrame1.loc[DataFrame1['ca']==4,'ca']=np.NaN
+
+
+DataFrame1 = DataFrame1.fillna(DataFrame1.median())
+
+
+DataFrame1.isnull().sum()
+
+
+DataFrame1
+
+
+X_train, X_test, y_train, y_test = train_test_split(DataFrame1.iloc[:,:-1], DataFrame1.iloc[:,-1], test_size = 0.3, random_state = 0)
+
+
+X_train.shape, X_test.shape,y_train.shape
+
+
+gnb = GaussianNB()
+
+
+gnb.fit(X_train, y_train)
+
+
+y_pred = gnb.predict(X_test)
+y_pred
+
+
+print('Model accuracy score: {0:0.4f}'. format(accuracy_score(y_test, y_pred)))
+
+
+
+dataplot = sn.heatmap(DataFrame4.corr(), cmap="Blues", annot=True)
+mat.figure(figsize=(20,15))
+mat.show()
